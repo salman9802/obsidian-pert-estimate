@@ -16,7 +16,7 @@ const prod = process.argv[2] === 'production';
  * Path for build.
  * Connects to `test-vault` in `/test`
  */
-const outdir = path.join("test", "test-vault", ".obsidian", "plugins", "obsidian-enc-git");
+const outdir = path.join("test", "test-vault", ".obsidian", "plugins", "obsidian-pert-estimate");
 
 const context = await esbuild.context({
 	banner: {
@@ -53,6 +53,9 @@ const context = await esbuild.context({
 		{
 			name: "copy-static",
 			setup(build) {
+				if (!fs.existsSync(outdir))
+					fs.mkdirSync(outdir, { recursive: true });
+
 				/* Copys `manifest.json` and `style.css` to outdir */
 				fs.copyFileSync("manifest.json", path.join(outdir, "manifest.json"));
 				if (fs.existsSync("style.css")) {

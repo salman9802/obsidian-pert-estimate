@@ -12,4 +12,7 @@ When you're ready, delete this note and make the vault your own.
 - [ ] [15m] [10m|15m|20m] test
 - [ ] [24.17m] {15m|25m|30m} test
 
+- [ ] [15m] {10m|15m|20m} test
+- [ ] [20m] {15m|20m|25m} test
+
 

@@ -59,9 +59,9 @@ export default class ObsidianPERTEstimatePlugin extends Plugin {
 
 		// If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
 		// Using this function will automatically remove the event listener when this plugin is disabled.
-		this.registerDomEvent(activeDocument, 'click', (_evt: MouseEvent) => {
-			new Notice(this.NOTICE_PREFIX + 'Click');
-		});
+		// this.registerDomEvent(activeDocument, 'click', (_evt: MouseEvent) => {
+		// 	new Notice(this.NOTICE_PREFIX + 'Click');
+		// });
 
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		// this.registerInterval(
@@ -157,7 +157,7 @@ export default class ObsidianPERTEstimatePlugin extends Plugin {
 					const businessWeeks = time / 2400; // Business week: 5 days
 					return (businessWeeks).toFixed(2).endsWith('.00') ? `${businessWeeks.toFixed(0)}bw` : `${(businessWeeks).toFixed(2)}bw`;
 				case 'm':
-					return (time).toFixed(2).endsWith('.00') ? `${time.toFixed(0)}bd` : `${(time).toFixed(2)}m`; // Minutes are always returned as raw number
+					return (time).toFixed(2).endsWith('.00') ? `${time.toFixed(0)}m` : `${(time).toFixed(2)}m`; // Minutes are always returned as raw number
 				// return `${time}m`; // Minutes are always returned as raw number
 				default:
 					return `${time}`; // Unknown unit is handled as raw number
