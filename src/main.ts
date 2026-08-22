@@ -157,7 +157,8 @@ export default class ObsidianPERTEstimatePlugin extends Plugin {
 					const businessWeeks = time / 2400; // Business week: 5 days
 					return (businessWeeks).toFixed(2).endsWith('.00') ? `${businessWeeks.toFixed(0)}bw` : `${(businessWeeks).toFixed(2)}bw`;
 				case 'm':
-					return `${time}m`; // Minutes are always returned as raw number
+					return (time).toFixed(2).endsWith('.00') ? `${time.toFixed(0)}bd` : `${(time).toFixed(2)}m`; // Minutes are always returned as raw number
+				// return `${time}m`; // Minutes are always returned as raw number
 				default:
 					return `${time}`; // Unknown unit is handled as raw number
 			}
@@ -262,7 +263,10 @@ export default class ObsidianPERTEstimatePlugin extends Plugin {
 					lines[i] = line.replace(/\[\]/, `[${convertFromMinutes(totalTimeInMinutes, unit)}]`);
 				} else {
 					// lines[i] = line.replace(this.PERT_FORMAT_REGEX, `[${convertFromMinutes(totalTimeInMinutes, unit)}]`);
+
 					lines[i] = line.replace(/\[([\d\.]+)(\w*)\|([\d\.]+)(\w*)\|([\d\.]+)(\w*)\]/, `[${convertFromMinutes(totalTimeInMinutes, unit)}] {${match[2].slice(1, -1)}}`);
+
+					// lines[i] = line.replace(/\[([\d\.]+)(\w*)\|([\d\.]+)(\w*)\|([\d\.]+)(\w*)\]/, `[${convertFromMinutes(totalTimeInMinutes, unit)}] ${match[2]}`);
 				}
 
 				// Push the updated total time for this task onto the stack
