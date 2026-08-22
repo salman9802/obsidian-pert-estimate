@@ -1,3 +1,4 @@
+import { setIcon } from "obsidian";
 import ObsidianPERTEstimatePlugin from "../main";
 
 export type StatusBarMessage = {
@@ -13,7 +14,23 @@ export class StatusBar {
 	private currentMessage?: StatusBarMessage;
 	public lastMessageTimestamp?: number;
 
+	MESSAGE_PREFIX = "PERT Estimate: ";
+	private iconEl: HTMLElement;
+	private textEl: HTMLElement;
+
 	constructor(private statusBarEl: HTMLElement, private readonly plugin: ObsidianPERTEstimatePlugin) {
+		this.iconEl = this.statusBarEl.createSpan({
+			cls: "pert-status-bar-icon",
+		});
+
+		this.textEl = this.statusBarEl.createSpan({
+			cls: "pert-status-bar-text",
+		});
+
+		setIcon(this.iconEl, "calculator");
+
+		this.statusBarEl.ariaLabel = "PERT Estimate";
+
 		this.messages = [];
 	}
 
@@ -25,7 +42,7 @@ export class StatusBar {
 	*/
 	public displayMessage(message: string, timeout: number = 0) {
 		this.messages.push({
-			message: `Enc Git: ${message.slice(0, 100)}`,
+			message: this.MESSAGE_PREFIX + `${message.slice(0, 100)}`,
 			timeout: timeout,
 		});
 		this.display();
@@ -34,8 +51,10 @@ export class StatusBar {
 	public display() {
 		if (this.messages.length > 0 && !this.currentMessage) {
 			this.currentMessage = this.messages.shift() as StatusBarMessage;
-			this.statusBarEl.ariaLabel = "";
-			this.statusBarEl.setText(this.currentMessage.message);
+
+			this.textEl.setText(this.currentMessage.message);
+
+			// this.statusBarEl.setText(this.currentMessage.message);
 			this.lastMessageTimestamp = Date.now();
 
 			if (this.currentMessage.timeout !== 0) {
@@ -57,7 +76,10 @@ export class StatusBar {
 	}
 
 	public removeCurrentMessage() {
-		this.statusBarEl.remove();
+		// this.statusBarEl.remove();
+		this.currentMessage = undefined;
+		this.lastMessageTimestamp = undefined;
+		this.textEl.empty();
 	}
 
 	// private displayState() {

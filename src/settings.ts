@@ -18,11 +18,11 @@ export class ObsidianPERTEstimateSettingTab extends PluginSettingTab {
 		// ========================= Setup various settings for this plugin's settings tab =========================
 
 		new Setting(containerEl)
-			.setName('Encryption Key')
-			.setDesc("Secret Key for Encryption. Keep it secure and avoid sharing it.")
+			.setName("Example option")
+			.setDesc("This option is just as an example. Might be used for future features.")
 			.addText((text) =>
 				text
-					.setPlaceholder('Enter your secret key')
+					.setPlaceholder("Enter anything you want (it's saved btw)")
 					.setValue(this.plugin.settings.key)
 					.onChange(async (value) => {
 						this.plugin.settings.key = value;

@@ -6,13 +6,11 @@ import ObsidianPERTEstimatePlugin from "./main";
 export function addPluginCommands(plugin: ObsidianPERTEstimatePlugin) {
 	const app = plugin.app;
 
-
-
 	plugin.addCommand({
-		id: "create-encrypted-repo",
-		name: "Create Encrypted Repo (.enc-git/.git)",
-		callback: () => {
-
+		id: "calc-pert-estimates",
+		name: "Calculate PERT Estimates",
+		editorCallback: () => {
+			plugin.calculate();
 		}
 	});
 

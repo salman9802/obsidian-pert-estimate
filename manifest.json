@@ -3,7 +3,7 @@
 	"name": "Obsidian PERT Estimate",
 	"version": "1.0.0",
 	"minAppVersion": "1.0.0",
-	"description": "PERT Estimation for markdown tasks.",
+	"description": "Obsidian Plugin for PERT Estimation in markdown tasks.",
 	"author": "Salman",
 	"authorUrl": "https://salman9802.github.io/Portfolio/",
 	"isDesktopOnly": false
