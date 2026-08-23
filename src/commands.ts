@@ -10,7 +10,15 @@ export function addPluginCommands(plugin: ObsidianPERTEstimatePlugin) {
 		id: "calc-pert-estimates",
 		name: "Calculate PERT Estimates",
 		editorCallback: () => {
-			plugin.calculate();
+			plugin.calculateTimeEstimates();
+		}
+	});
+
+	plugin.addCommand({
+		id: "calc-recalculate-estimates",
+		name: "Recalculate Derived Estimates",
+		editorCallback: () => {
+			plugin.recalculateDerivedEstimates();
 		}
 	});
 

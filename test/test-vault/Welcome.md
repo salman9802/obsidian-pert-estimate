@@ -15,4 +15,9 @@ When you're ready, delete this note and make the vault your own.
 - [ ] [15m] {10m|15m|20m} test
 - [ ] [20m] {15m|20m|25m} test
 
+***
+
+- [ ] [30m] {10m|15m|20m} Main task
+	- [ ] [15m] {10m|15m|20m} Subtask
+	- [ ] [15m] {10m|15m|20m} Subtask
 
