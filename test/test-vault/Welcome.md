@@ -21,3 +21,7 @@ When you're ready, delete this note and make the vault your own.
 	- [ ] [15m] {10m|15m|20m} Subtask
 	- [ ] [15m] {10m|15m|20m} Subtask
 
+***
+
+- [ ] [16m] {15m|34m|54m} Test task
+	- [ ] [16m] {10m|15m|26m} Sub task

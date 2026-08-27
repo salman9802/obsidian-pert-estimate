@@ -97,9 +97,16 @@ export default class ObsidianPERTEstimatePlugin extends Plugin {
 		const editor = this.app.workspace.activeEditor?.editor;
 		if (editor) {
 			new Notice(this.NOTICE_PREFIX + "Calculating task time estimates using PERT...");
+			// Save previous state
+			const cursor = editor.getCursor();
+
 			const content = editor.getValue();
 			const updatedContent = this.updateTimeEstimates(content);
 			editor.setValue(updatedContent);
+
+			// Update to previous state
+			editor.setCursor(cursor);
+
 			this.statusBar?.displayMessage(this.NOTICE_PREFIX + "Calculation complete...", 5000);
 			// new Notice(this.NOTICE_PREFIX + "Calculation complete...");
 		} else {
@@ -281,9 +288,16 @@ export default class ObsidianPERTEstimatePlugin extends Plugin {
 		const editor = this.app.workspace.activeEditor?.editor;
 		if (editor) {
 			new Notice(this.NOTICE_PREFIX + "ReCalculating dervied time estimates...");
+			// Save previous state
+			const cursor = editor.getCursor();
+
 			const content = editor.getValue();
 			const updatedContent = this.updateDerivedEstimates(content);
 			editor.setValue(updatedContent);
+
+			// Update to previous state
+			editor.setCursor(cursor);
+
 			this.statusBar?.displayMessage(this.NOTICE_PREFIX + "Recalculation complete...", 5000);
 			// new Notice(this.NOTICE_PREFIX + "Calculation complete...");
 		} else {
