@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-pert-estimate",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "Obsidian PERT Estimate: Obsidian Plugin for PERT Estimation in markdown tasks.",
 	"main": "main.js",
 	"type": "module",
