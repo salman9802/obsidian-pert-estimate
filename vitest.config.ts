@@ -5,9 +5,12 @@ import { dirname, resolve } from "node:path";
 const rootDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-	test: {
+	resolve: {
 		alias: {
 			obsidian: resolve(rootDir, "src/tests/mocks/obsidian.ts")
 		}
+	},
+	test: {
+		environment: "node"
 	}
 });

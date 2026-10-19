@@ -1,6 +1,12 @@
 
 export class Plugin {
-	// NOTE: Add only the runtime behavior I'm going to test.
+	app: any;
+	manifest: any;
+
+	constructor(app: any, manifest: any) {
+		this.app = app;
+		this.manifest = manifest;
+	}
 }
 
 export class PluginSettingTab {
