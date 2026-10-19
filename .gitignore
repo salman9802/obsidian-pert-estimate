@@ -24,3 +24,6 @@ data.json
 
 locals
 test/test-vault/.obsidian/
+
+# Vitest reports and artifacts
+.vitest/
